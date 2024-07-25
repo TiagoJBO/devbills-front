@@ -8,7 +8,8 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
   ],
   "ignorePatterns": [
     "dist"
@@ -17,9 +18,23 @@
   "plugins": [
     "react-refresh",
     "prettier",
-    "eslint-plugin-import-helpers"
+    "eslint-plugin-import-helpers",
+    "@typescript-eslint"
   ],
   "rules": {
+    "prettier/prettier": "error",
+    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-object-literal-type-assertion": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-use-before-define": "off",
     "import-helpers/order-imports": [
       "warn",
       {

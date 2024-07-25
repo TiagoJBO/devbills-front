@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 
 import { theme } from '../../styles/theme';
 import { formactCurrency } from '../../utils/format-currenncy';
+import { Category } from '../../services/api-types';
 
 const apiData = [
  {
@@ -26,6 +27,12 @@ const apiData = [
  },
 ];
 
+export type CategoryProps={
+    id?:string
+    title:string 
+    color:string 
+}
+
 type ChartData = {
  id: string,
  label: string,
@@ -34,7 +41,10 @@ type ChartData = {
  color: string,
 };
 
-export function CategoriesPieChart() {
+type CategoriesPierChartProps={
+    onClick:(category:Category)=>void
+}
+    export function CategoriesPieChart({onClick}:CategoriesPierChartProps) {
  const data = useMemo<ChartData[]>(() => {
   const chartData: ChartData[] = apiData.map((item) => ({
    id: item.title,
@@ -49,6 +59,14 @@ export function CategoriesPieChart() {
 
  return (
   <ResponsivePie
+  onClick={({data})=>
+     onClick({
+ _id:data.externalId,
+ title:data.id,
+ color:data.color,
+
+  })
+}
    data={data}
    enableArcLabels={false}
    enableArcLinkLabels={false}

@@ -4,3 +4,4 @@ export function formactCurrency(value: number) {
   currency: 'BRL',
  }).format(value / 100);
 }
+
